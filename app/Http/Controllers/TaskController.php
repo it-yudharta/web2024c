@@ -57,4 +57,13 @@ class TaskController extends Controller
 
         return redirect('/tasks');
     }
+
+    public function swap(Task $task)
+    {
+        $task->completed = ! $task->completed;
+        $task->save();
+
+        return redirect('/tasks');
+    }
+
 }

@@ -23,10 +23,11 @@
             <td>{{ $task->id }}</td>
             <td>{{ $task->title }}</td>
             <td>{{ $task->description }}</td>
-            <td>{{ $task->completed }}</td>
+            <td>{{ $task->completed ? 'IYA' : 'BELUM' }}</td>
             <td>
                 <a href="/tasks/{{ $task->id }}">Edit</a>
                 <a href="/tasks/{{ $task->id }}/delete">Hapus</a>
+                <a href="/tasks/{{ $task->id }}/swap">Swap</a>
             </td>
         </tr>
         @endforeach
