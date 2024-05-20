@@ -8,9 +8,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/login', [LoginController::class, 'store']);
+Route::middleware('guest')->group(function() {
+    Route::get('/login', [LoginController::class, 'login'])->name('login');
+    Route::post('/login', [LoginController::class, 'store']);
+});
 
+Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 Route::middleware('auth')->group(function() {
     Route::get('/tasks', [TaskController::class, 'index']);
